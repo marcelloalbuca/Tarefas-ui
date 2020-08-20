@@ -1,11 +1,8 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -14,12 +11,12 @@ import { TarefasFormComponent } from './tarefas/tarefas-form/tarefas-form.compon
 
 const  appRoutes: Routes = [
   { path: 'home', component: TarefasListComponent },
+  { path: 'tarefa/nova', component: TarefasFormComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   }
 ];
-
 
 @NgModule({
   declarations: [
@@ -29,10 +26,10 @@ const  appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     FormsModule,
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
