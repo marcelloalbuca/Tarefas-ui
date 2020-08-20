@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Tarefa } from '../shared/tarefa';
+import { TarefaService } from '../shared/tarefa.service';
 
 @Component({
   selector: 'app-tarefas-list',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarefasListComponent implements OnInit {
 
-  constructor() { }
+  tarefas: Tarefa[];
 
-  ngOnInit(): void {
+  constructor(private tarefaService: TarefaService) { }
+
+  ngOnInit() {
+    this.getAll();
   }
 
+  getAll(){
+    this.tarefaService.getAll().subscribe(resp => {
+      this.tarefas = resp;
+    })
+  }
+
+  remove(tarefa: Tarefa){
+    this.tarefaService.remove(tarefa.id).subscribe(() => {
+
+      this.tarefas = this.tarefas.filter(p => p !== tarefa);
+
+    });
+  }
 }
+

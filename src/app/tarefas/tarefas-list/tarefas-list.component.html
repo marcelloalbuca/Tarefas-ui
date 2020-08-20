@@ -1,1 +1,42 @@
-<p>tarefas-list works!</p>
+<nav class="navbar navbar-dark" >
+    <a class="navbar-brand text-light" routerLink="/">Tarefas</a>
+</nav>
+<div class="card">
+  <div class="card-header bg-primary text-light">
+    <h2>Tarefas</h2>
+  </div>
+  <div class="container">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Concluido</th>
+          <th scope="col">Remover</th>
+        </tr>
+      </thead>
+
+     <tbody>
+
+        <tr *ngFor="let tarea of tarefas">
+
+          <td>{{ tarefa.id }}</td>
+          <td>{{ tarefa.nome }}</td>
+          <td>{{ tarefa.descricao }}</td>
+          <td><input type="checkbox"></td>
+          <td>
+            <a class="btn btn-danger" title="Excluir" (click)="remove(tarefa)">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
+     </tbody>
+    </table>
+
+    <a routerLink="/tarefa/nova" class="btn btn-primary">Nova tarefa</a>
+
+  </div>
+</div>
+</div>
